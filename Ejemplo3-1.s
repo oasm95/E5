@@ -1,4 +1,7 @@
 ; Implementacion de la funcion factorial, guarda el resultado de factorial en una variable
+; Esta version utiliza el sufijo S en la instruccion SUB
+; Se implementan condicionales dependiendo de banderas
+; Se optimiza respecto a el ejemplo 3, y calcula el factorial de valor exacto especificado
 
 ;-------------------Define el uso de instrucciones THUMB-----------
 		THUMB
