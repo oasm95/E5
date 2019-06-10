@@ -19,8 +19,8 @@ cuenta		ADD R1, #1	;R1 = R1+1
 		BEQ fin		; si son iguales(EQ) R1 Y el valor comparado, salta hacia "fin", sino ejecuta la siguiente instruccion
 		B cuenta	; salta a cuenta
 
-fin		LDR R0, =cont	;R0 = *cont, guarda la direccion del espacio de memoria asignado a la variable cont en R0
-		STR R1, [R0]    ;cont = R1, asigna el valor de R1 a la localidad de memoria que apunta R0 
+fin		LDR R0, =cont	;R0 = &cont, guarda la direccion del espacio de memoria asignado a la variable cont en R0
+		STR R1, [R0]    ;*R0 = R1, asigna el valor de R1 a la localidad de memoria que apunta R0 
 		B Start		; regresa Start
 
 			
