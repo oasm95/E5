@@ -30,7 +30,7 @@ Factorial	MUL R1,R0	;R1 = R1*R0, multiplica de factorial con el contador
 
 fin2		MOV R1, #1	; si se desea calcular el factorial de 0 automaticamente se le asigna al resultado un valor de 1, 0!=1
 fin		LDR R3, =resultado ; R3 = &resultado, guarda la direccion del espacio de memoria asignado a la variable resultado en R3
-		STR R1, [R3]	;asigna el valor de R1 a la localidad de memoria que apunta R3
+		STR R1, [R3]	;*R3 = R1, asigna el valor de R1 a la localidad de memoria que apunta R3
 		B Start
 			
 		ALIGN      
