@@ -4,9 +4,9 @@
 			AREA 	DATA, ALIGN=4 
 ;------------------Declarar Variables -------------------------
 RESUL		SPACE	4
-;------Define área de codigo, con capacidad de ser importado C---------
+;------Define Ã¡rea de codigo, con capacidad de ser importado C---------
 			AREA	|.text|, CODE, READONLY, ALIGN=2
-;--------------------Declara la instrucción Start como Global-----------			
+;--------------------Declara la instrucciÃ³n Start como Global-----------			
 			EXPORT	Start
 ;-----------------------------Codigo------------------------------------
 Start	 	LDR R0, = RESUL
