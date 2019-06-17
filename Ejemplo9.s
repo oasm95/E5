@@ -12,49 +12,49 @@ RESUL		SPACE	4
 ;-----------------------------Codigo------------------------------------
 Start	 	
 LOOP
-			VMOV.F32 S0, #3		; ASIGNA EL VALOR DE 3 A ENTRADA DE SUBRUTINA MATH_Exponential 
-			BL MATH_Exponential	; CALCULA EL VALOR DE e^3, llamando a la subrutina MATH_Exponential
-			LDR R0, =RESUL
-			VSTR.F32 S0, [R0]	; GUARDA EL RESULTADO EN LA VARIABLE RESUL, 20.0855
-			B LOOP
+	  VMOV.F32 S0, #3		; ASIGNA EL VALOR DE 3 A ENTRADA DE SUBRUTINA MATH_Exponential 
+	  BL MATH_Exponential	; CALCULA EL VALOR DE e^3, llamando a la subrutina MATH_Exponential
+	  LDR R0, =RESUL
+	  VSTR.F32 S0, [R0]	; GUARDA EL RESULTADO EN LA VARIABLE RESUL, 20.0855
+	  B LOOP
 
 ;-------------------------------		
 ;-Funcion exponente, S1 = S0^R0-
-;-Entrada:	S0,R0			   -
-;-S0 BASE					   -	
-;-R0 EXPONENTE				   -
-;-SALIDA :	S1				   -
-;-S1 RESULTADO				   -
+;-Entrada:	S0,R0	       -
+;-S0 BASE		       -	
+;-R0 EXPONENTE		       -
+;-SALIDA :	S1	       -
+;-S1 RESULTADO		       -
 ;-------------------------------
-MATH_Exp	VMOV.F32 S1, #1
-Exp_LOOP	VMUL.F32 S1 ,S0	
-          SUBS R0, #1
-          BNE Exp_LOOP			
-          BX LR
+MATH_Exp  VMOV.F32 S1, #1
+Exp_LOOP  VMUL.F32 S1 ,S0	
+	  SUBS R0, #1
+	  BNE Exp_LOOP			
+	  BX LR
 ;--------------------------------			
 ;-Funcion factorial, S0 = R0!   -
-;-Entrada: R0					-
+;-Entrada: R0			-
 ;-R0 Numero a calcular factorial-
-;-Salida:  S0					-
-;-S0 Resultado					-
-;-Modifica: S1,S2				-
+;-Salida:  S0			-
+;-S0 Resultado			-
+;-Modifica: S1,S2		-
 ;--------------------------------
-MATH_Fac	VMOV.F32 S1, #1		;contador
-          VMOV.F32 S0, #1		;llevara el resultado
-          VMOV.F32 S2, #1		;constante para sumar			
+MATH_Fac  VMOV.F32 S1, #1		;contador
+	  VMOV.F32 S0, #1		;llevara el resultado
+	  VMOV.F32 S2, #1		;constante para sumar			
 Fac_LOOP	
-          VMUL.F32 S0, S1
-          VADD.F32 S1, S2
-          SUBS R0, #1
-          BNE Fac_LOOP
-          BX LR
+	  VMUL.F32 S0, S1
+	  VADD.F32 S1, S2
+	  SUBS R0, #1
+	  BNE Fac_LOOP
+	  BX LR
 ;--------------------------------
 ;-Funcion Exponencial, S0 = e^S0-
-;-Entrada: S0					-
-;-S0 Exponente					-
-;-Salida: S0					-
-;-S0 Resultado					-
-;-Modifica: S4, S2
+;-Entrada: S0			-
+;-S0 Exponente			-
+;-Salida: S0			-
+;-S0 Resultado			-
+;-Modifica: S4, S2 		-
 ;--------------------------------
 MATH_Exponential
 ;La funcion exponcial esta dada por:
