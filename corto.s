@@ -48,17 +48,17 @@ Int_PF		LDR R1, =0X400FE608
 
 ;-------Main---------
 			LDR R1, =0X40025000; DIRECCION BASE PUERTO F
-LEER	LDR R0, [R1, #0X3FC];Cambiar la direccion del offset a la del pin en especifico. 0x40
+LEER			LDR R0, [R1, #0X3FC];Cambiar la direccion del offset a la del pin en especifico. 0x40
 			;AND R0, #0X10      ;o Agregar una compuerta and para verificar unicamente el pin4
-      CMP R0 , #0X10      ;o cualquier cambio que encendiera la luz blanca al presionar el boton
+        		CMP R0 , #0X10      ;o cualquier cambio que encendiera la luz blanca al presionar el boton
 			BNE LED_ON
 
-LED_OFF		LDR R0, [R1, #0X3FC]
+LED_OFF			LDR R0, [R1, #0X3FC]
 			BIC R0, #0X0E
 			STR R0, [R1, #0X3FC]
 			B LEER
 
-LED_ON		LDR R0, [R1, #0X3FC]
+LED_ON			LDR R0, [R1, #0X3FC]
 			ORR R0, #0X0E
 			STR R0, [R1, #0X3FC]
 			B LEER
