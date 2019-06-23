@@ -4,21 +4,21 @@
 ;
 GPIO_PORTB_BASE EQU 0X40005000
 
-		IMPORT   SysTick_Init
+	IMPORT   SysTick_Init
         IMPORT   SysTick_Wait
         IMPORT   SysTick_Wait10ms
         IMPORT   PLL_Init
-		IMPORT 	 Int_PF
+	IMPORT 	 Int_PF
 		
 
         AREA    |.text|, CODE, READONLY, ALIGN=2
         THUMB
         EXPORT  Start
 
-Start                ; initialize SysTick timer
+Start                
 	BL  PLL_Init                    ; set system clock to 80 MHz
-    BL  SysTick_Init 
-	BL	Int_PF
+  	BL  SysTick_Init 		; initialize SysTick timer
+	BL  Int_PF
 	
 	LDR R1, =GPIO_PORTB_BASE
 	MOV R0 , #0X20
